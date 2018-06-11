@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <h1 class="page-header">Tasks!</h1>
+  <p>
+    <button type="button" class="btn btn-primary js-create-task">
+      <span class="glyphicon glyphicon-plus"></span>
+      New task
+    </button>
+  </p>
+    <table class="task" id="task-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th> Description </th>
+        <th> Done </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+        <tr>
+          <td>{{ task.id }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.done }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="9" class="text-center bg-warning">No tasks</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<div class="modal fade" id="modal-tasks">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+{% endblock %}
